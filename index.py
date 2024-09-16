@@ -292,7 +292,7 @@ while True:
 	print("\033[1;37m║  \033[1;32mTool TraoDoiSub.com \033[1;37m║          ")
 	print("\033[1;37m╚══════════════════════╝           ")
 	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m3.1 \033[1;97m: \033[1;34mTool TDS Facebook \033[1;32m[Online] \033[1;32m[Termux + PC]")
-	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m3.2 \033[1;97m: \033[1;34mTool TDS Facebook Full Job \033[1;32m[Online] \033[1;32m[Termux + PC]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m3.2 \033[1;97m: \033[1;34mTool TDS FB Full Job \033[1;32m[Online] \033[1;32m[Termux + PC]")
 	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m3.3 \033[1;97m: \033[1;34mTool TDS Pro5 \033[1;32m[Online] \033[1;32m[Termux + PC]")
 	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m3.4 \033[1;97m: \033[1;34mTool TDS Pro5v1 \033[1;32m[Online] \033[1;32m[Termux + PC]")
 	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m3.5 \033[1;97m: \033[1;34mTool TDS TikTok \033[1;32m[Online] \033[1;32m[Termux + PC]")
@@ -300,7 +300,7 @@ while True:
 	print("\033[1;37m╔══════════════════════╗         ")
 	print("\033[1;37m║  \033[1;32mTool Buff View \033[1;37m     ║   ")
 	print("\033[1;37m╚══════════════════════╝           ")
-	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m4.1 \033[1;97m: \033[1;34mTool Follow Page Pro5\033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m4.1 \033[1;97m: \033[1;34mTool Follow Page Pro5 \033[1;32m[Online]")
 	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m4.2 \033[1;97m: \033[1;34mTool Buff Member Facebook \033[1;32m[Online]")
 	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m4.3 \033[1;97m: \033[1;34mTool Buff Member Telegram \033[1;32m[Online]")
 	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m4.4 \033[1;97m: \033[1;34mBuff Reaction Story Bằng Page Pro5 \033[1;32m[Online]")
@@ -309,19 +309,19 @@ while True:
 	print("\033[1;37m╔════════════════════════╗         ")
 	print("\033[1;37m║  \033[1;32mTool Gen Mail + Proxy \033[1;37m║   ")
 	print("\033[1;37m╚════════════════════════╝           ")
-	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m5.1 \033[1;97m: \033[1;34mTool Gen Mail V1\033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m5.1 \033[1;97m: \033[1;34mTool Gen Mail V1 \033[1;32m[Online]")
 	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m5.2 \033[1;97m: \033[1;34mTool Gen Mail V2 \033[1;32m[Online]")
 	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m5.3 \033[1;97m: \033[1;34mTool Gen Proxy V1 \033[1;32m[Online]")
-	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m5.4 \033[1;97m: \033[1;34mTool Gen Proxy V2\033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m5.4 \033[1;97m: \033[1;34mTool Gen Proxy V2 \033[1;32m[Online]")
 	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m5.5 \033[1;97m: \033[1;34mTool Gen Proxy V3 \033[1;32m[Online]")
 	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m5.6 \033[1;97m: \033[1;34mTool Gen Proxy V4 \033[1;32m[Online]")
 	print("\033[1;37m╔══════════════════════╗         ")
 	print("\033[1;37m║  \033[1;32mTool Spam Vip \033[1;37m      ║   ")
 	print("\033[1;37m╚══════════════════════╝           ")
-	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m6.1 \033[1;97m: \033[1;34mTool Spam Box Messager\033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m6.1 \033[1;97m: \033[1;34mTool Spam Box Messager \033[1;32m[Online]")
 	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m6.2 \033[1;97m: \033[1;34mTool Follow Spam Comment \033[1;32m[Online]")
 	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m6.3 \033[1;97m: \033[1;34mTool Spam Messager \033[1;32m[Online]")
-	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m6.4 \033[1;97m: \033[1;34mTool Spam sms + call♔\033[1;32m[Online]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m6.4 \033[1;97m: \033[1;34mTool Spam sms + call♔ \033[1;32m[Online]")
 	print("\033[1;37m╔══════════════════════╗         ")
 	print("\033[1;37m║  \033[1;32mTool Tiện Ích \033[1;37m      ║   ")
 	print("\033[1;37m╚══════════════════════╝           ")
@@ -387,81 +387,81 @@ while True:
 	elif chon == '3.6':
 		# Thanh Công
 		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/TraoDoiSub/TDSIG.py').text)	
-		# Tiên ích
+		# Buff view
 	elif chon == '4.1':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TienIchFaceBook/ToolGetidFacebook.py').text)
+		exec(requests.get('https://github.com/trinhhuong2004/ToolGop/blob/main/buff/bufffl.py').text)
 	elif chon == '4.2':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TienIchFaceBook/ToolGetTokenFB.py').text)
+		exec(requests.get('https://github.com/trinhhuong2004/ToolGop/blob/main/buff/buffmemfb.py').text)
 	elif chon == '4.3':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TienIchFaceBook/ToolSpamMessage.py').text)
+		exec(requests.get('https://github.com/trinhhuong2004/ToolGop/blob/main/buff/buffmemtele.py').text)
 	elif chon == '4.4':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TienIchFaceBook/ToolShareAoCookieV1.py').text)
+		exec(requests.get('https://github.com/trinhhuong2004/ToolGop/blob/main/buff/buffreactstr.py.py').text)
 	elif chon == '4.5':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TienIchFaceBook/ToolDaoMail.py').text)
+		exec(requests.get('https://github.com/trinhhuong2004/ToolGop/blob/main/buff/buffview.py').text)
 	elif chon == '4.6':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TienIchFaceBook/ThoatTool.py').text)
+		exec(requests.get('https://github.com/trinhhuong2004/ToolGop/blob/main/buff/viewtik.py').text)
 	elif chon == '5.1':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TienIchFaceBook/ToolGetidFacebook.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/mailer/genmailv1.py').text)
 	elif chon == '5.2':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TienIchFaceBook/ToolGetTokenFB.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/mailer/genmailv2.py').text)
 	elif chon == '5.3':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TienIchFaceBook/ToolSpamMessage.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/proxy/genproxyv1.py').text)
 	elif chon == '5.4':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TienIchFaceBook/ToolShareAoCookieV1.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/proxy/genproxyv2.py').text)
 	elif chon == '5.5':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TienIchFaceBook/ToolDaoMail.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/proxy/genproxyv3.py').text)
 	elif chon == '5.6':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TienIchFaceBook/ThoatTool.py').text) 
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/proxy/genproxyv4.py').text) 
 	elif chon == '6.1':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TienIchFaceBook/ToolGetidFacebook.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/spam/spambox.py').text)
 	elif chon == '6.2':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TienIchFaceBook/ToolGetTokenFB.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/spam/spamcmt.py').text)
 	elif chon == '6.3':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TienIchFaceBook/ToolSpamMessage.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/spam/spammess.py').text)
 	elif chon == '6.4':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TienIchFaceBook/ToolShareAoCookieV1.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/spam/spamsms.py').text)
 	elif chon == '7.1':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TienIchFaceBook/ToolGetidFacebook.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/TienIchFaceBook/ToolGetidFacebook.py').text)
 	elif chon == '7.2':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TienIchFaceBook/ToolGetTokenFB.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/TienIchFaceBook/ToolGetTokenFB.py').text)
 	elif chon == '7.3':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TienIchFaceBook/ToolSpamMessage.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/TienIchFaceBook/ToolSpamMessage.py').text)
 	elif chon == '7.4':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TienIchFaceBook/ToolShareAoCookieV1.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/TienIchFaceBook/ToolShareAoCookieV1.py').text)
 	elif chon == '7.5':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TienIchFaceBook/ToolDaoMail.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/TienIchFaceBook/urllink.py').text)
 	elif chon == '7.6':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TienIchFaceBook/ThoatTool.py').text) 
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/TienIchFaceBook/vidtiktok.py').text) 
 	elif chon == '7.7':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TienIchFaceBook/ThoatTool.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/TienIchFaceBook/vidytb.py').text)
 	elif chon == '7.8':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TienIchFaceBook/ThoatTool.py').text)
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/TienIchFaceBook/ToolDaoMail.py').text)
 	elif chon == '7.9':
 		# Thanh Công
-		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TienIchFaceBook/ThoatTool.py').text)          
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/TienIchFaceBook/ThoatTool.py').text)          
 	else:
 		sys.exit("")
