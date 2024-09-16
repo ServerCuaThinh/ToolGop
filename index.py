@@ -207,16 +207,16 @@ def main():
 
             # Yêu cầu người dùng nhập key
             while True:
-                keynhap = input('Key Đã Vượt Là: ')
+                keynhap = input('\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mKey Đã Vượt Là: ')
 
                 # Kiểm tra key nhập vào với key được tạo ra từ IP hiện tại
                 if keynhap == key:
-                    print('Key Đúng Mời Bạn Dùng Tool')
+                    print('\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  Key Đúng Mời Bạn Dùng Tool')
                     sleep(2)
                     luu_thong_tin_ip(ip_address, keynhap, expiration_date)
                     break
                 else:
-                    print('Key Sai Vui Lòng Vượt Lại Link:', link_key)
+                    print('\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  Key Sai Vui Lòng Vượt Lại Link:', link_key)
         
         # Kiểm tra nếu đã qua 00:00:01 của ngày mới
         if da_qua_gio_moi():
@@ -297,9 +297,6 @@ while True:
 	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m7.7 \033[1;97m: \033[1;34mTool Download Video Youtube \033[1;32m[Online]")
 	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m7.8 \033[1;97m: \033[1;34mTool Đào Mail \033[1;32m[Online]")
 	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m7.9 \033[1;97m: \033[1;34mThoát Tool \033[1;32m[Online]")
-      
-	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m9782 \033[1;97m: \033[1;34mTool Đào Mail \033[1;32m[Online]")
-	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m9373 \033[1;97m: \033[1;34mThoát Tool \033[1;32m[Online]")
 	print(f"\033[97m════════════════════════════════════════════════════════")
 	chon = input('\033[1;91m┌─╼\033[1;97m[\033[1;91m<\033[1;97m/\033[1;91m>\033[1;97m]--\033[1;91m>\033[1;97m Nhập lựa chọn \033[1;97m \n\033[1;91m└─╼\033[1;91m✈ \033[1;33m : ')
 	print('\033[1;39m─────────────────────────────────────────────────────────── ')
