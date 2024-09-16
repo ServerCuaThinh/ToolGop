@@ -263,7 +263,7 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
+
 
 while True:
 	os.system('cls' if os.name == 'nt' else 'clear')
