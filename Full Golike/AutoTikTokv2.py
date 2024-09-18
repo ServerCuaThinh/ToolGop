@@ -223,7 +223,7 @@ def display_ip_address(ip_address):
 \033[97m════════════════════════════════════════════════
 """
 
-        os.system("clear")
+        os.system('cls' if os.name== 'nt' else 'clear')
         for x in banner:
             print(x, end="")
             time.sleep(0.001)

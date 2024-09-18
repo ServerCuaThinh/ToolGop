@@ -25,7 +25,7 @@ banner = """
 \033[1;97m[\033[1;91m❣\033[1;97m]\033[1;97m Telegram\033[1;31m : \033[1;97m☞\033[1;32mhttps://t.me/+77MuosyD-yk4MGY1🔫\033[1;97m☜
 \033[97m════════════════════════════════════════════════
 """
-os.system("clear")
+os.system('cls' if os.name== 'nt' else 'clear')
 for x in banner:
   print(x,end = "")
   sleep(0.001)
@@ -155,13 +155,13 @@ while True:
     break
   except:
     print("\033[1;31mNhập Vào 1 Số!!!")    
-os.system("clear")    
+os.system('cls' if os.name== 'nt' else 'clear')    
 dem = 0
 tong = 0
 checkdoiacc = 0
 dsaccloi = []
 accloi = ""
-os.system("clear")
+os.system('cls' if os.name== 'nt' else 'clear')
 
 for x in banner:
   print(x,end = "")
