@@ -86,7 +86,7 @@ def bes4(url):
     return None, None
 
 def checkver():
-    url = 'https://huongdz.hotrommo.com/'
+    url = 'https://checkserver.hotrommo.com/'
     version, maintenance = bes4(url)
     
     if maintenance == 'on':
@@ -103,6 +103,7 @@ if current_version:
 else:
     print("Không thể lấy thông tin phiên bản hoặc tool đang được bảo trì.")
 # Hàm để lấy địa chỉ IP của thiết bị
+
 def get_ip_address():
     try:
         hostname = socket.gethostname()
@@ -214,15 +215,19 @@ def main():
             sleep(2)
         else:
             url, key, expiration_date = generate_key_and_url(ip_address)
-            token_yeumoney = 'f7e85811bc83948a0a66e121fa312afc03472eabd86a53c4bc9ec86662a480c8'
-            yeumoney_response = requests.get(f'https://yeumoney.com/QL_api.php?token={token_yeumoney}&format=json&url={url}')
+            # token_yeumoney = 'f7e85811bc83948a0a66e121fa312afc03472eabd86a53c4bc9ec86662a480c8'
+            # yeumoney_response = requests.get(f'https://yeumoney.com/QL_api.php?token={token_yeumoney}&format=json&url={url}')
+            yeumoney_response = requests.get(f'https://dilink.net/JSON_QL_API.php?token=7547feb041956891c2e2c2d5ca29080039c12b4ed7fa4c4273a85ba17bb5bc87&url=url={url}')
+            # print(yeumoney_response)
             if yeumoney_response.status_code == 200:
                 yeumoney_data = yeumoney_response.json()
+                print(yeumoney_data)
                 if yeumoney_data.get('status') == "error":
                     print(yeumoney_data.get('message'))
                     quit()
                 else:
                     link_key = yeumoney_data.get('shortenedUrl')
+                    print(link_key)
                     token_link4m = '66358d4299686f733016d95a'
                     link4m_response = requests.get(f'https://link4m.co/api-shorten/v2?api={token_link4m}&format=json&url={link_key}')
                     print("\033[1;31mLưu Ý: \033[1;33mTool Free Nhé Cả Nhà Yêu \033[1;91m❣\033[1;32m")
