@@ -165,7 +165,7 @@ def get_shortened_link_phu(url):
     except requests.RequestException:
         return None
 
-def main(): 
+def main():
     ip_address = get_ip_address()
     display_ip_address(ip_address)
 
@@ -184,14 +184,10 @@ def main():
             with ThreadPoolExecutor(max_workers=2) as executor:
                 print("\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mNhập 1 Để Lấy Key Free \033[1;33m(Vượt 1 link)")
                 print("\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mNhập 2 Để Lấy Key Dự Phòng \033[1;33m(Vượt 2 link)")
-                
+
                 while True:
                     try:
-                        try:
-                            choice = input("\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;34mChọn lựa chọn: ")
-                        except KeyboardInterrupt:
-                            print("\n\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;31mCảm ơn bạn đã dùng Tool Hướng Dev. Thoát...")
-                            sys.exit()
+                        choice = input("\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;34mChọn lựa chọn: ")
                         print("\033[97m════════════════════════════════════════════════")
                         
                         if choice == "1":  # Kiểm tra chuỗi "1"
@@ -204,7 +200,7 @@ def main():
                                 link_key = yeumoney_data.get('shortenedUrl')
                                 token_link4m = '66358d4299686f733016d95a'
                                 link4m_response = requests.get(f'https://link4m.co/api-shorten/v2?api={token_link4m}&format=json&url={link_key}', timeout=5)
-                                
+
                                 if link4m_response.status_code == 200:
                                     link4m_data = link4m_response.json()
                                     if link4m_data.get('status') == "error":
@@ -230,18 +226,14 @@ def main():
                                     return
                             
                             while True:
-                                try:
-                                    keynhap = input('Key Đã Vượt Là: ')
-                                    if keynhap == key:
-                                        print('Key Đúng Mời Bạn Dùng Tool')
-                                        sleep(2)
-                                        luu_thong_tin_ip(ip_address, keynhap, expiration_date)
-                                        break
-                                    else:
-                                        print('Key Sai Vui Lòng Vượt Lại Link:', link_key_map)
-                                except KeyboardInterrupt:
-                                    print("\n\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;31mCảm ơn bạn đã dùng Tool Hướng Dev. Thoát...")
-                                    sys.exit()
+                                keynhap = input('Key Đã Vượt Là: ')
+                                if keynhap == key:
+                                    print('Key Đúng Mời Bạn Dùng Tool')
+                                    sleep(2)
+                                    luu_thong_tin_ip(ip_address, keynhap, expiration_date)
+                                    return  # Thoát khỏi vòng lặp và hàm main
+                                else:
+                                    print('Key Sai Vui Lòng Vượt Lại Link:', link_key_map)
 
                         elif choice == "2":  # Kiểm tra chuỗi "2"
                             dlink_future = executor.submit(get_shortened_link, url)
@@ -267,18 +259,14 @@ def main():
                                     print('Không thể kết nối đến dịch vụ rút gọn URL')
                                     return
                             while True:
-                                try:
-                                    keynhap = input('Key Đã Vượt Là: ')
-                                    if keynhap == key:
-                                        print('Key Đúng Mời Bạn Dùng Tool')
-                                        sleep(2)
-                                        luu_thong_tin_ip(ip_address, keynhap, expiration_date)
-                                        break
-                                    else:
-                                        print('Key Sai Vui Lòng Vượt Lại Link:', link_key)
-                                except KeyboardInterrupt:
-                                    print("\n\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;31mCảm ơn bạn đã dùng Tool Hướng Dev. Thoát...")
-                                    sys.exit()
+                                keynhap = input('Key Đã Vượt Là: ')
+                                if keynhap == key:
+                                    print('Key Đúng Mời Bạn Dùng Tool')
+                                    sleep(2)
+                                    luu_thong_tin_ip(ip_address, keynhap, expiration_date)
+                                    return  # Thoát khỏi vòng lặp và hàm main
+                                else:
+                                    print('Key Sai Vui Lòng Vượt Lại Link:', link_key)
                                 
                         else:
                             # Nếu người dùng nhập không phải 1 hoặc 2, yêu cầu nhập lại
