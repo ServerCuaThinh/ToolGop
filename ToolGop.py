@@ -8,10 +8,9 @@ import random
 import requests
 import socket
 import sys
-from time import sleep  # Sửa lỗi ở đây
+from time import sleep  # Đã sửa lỗi ở đây
 from datetime import datetime, timedelta
 from bs4 import BeautifulSoup
-from cryptography.fernet import Fernet
 from concurrent.futures import ThreadPoolExecutor
 
 # Kiểm tra và cài đặt thư viện cần thiết
@@ -21,20 +20,20 @@ try:
     from colorama import Fore, Style
     import pystyle
 except ImportError:
-    os.system("pip install faker requests colorama pystyle")
+    os.system("pip install faker requests colorama bs4 pystyle")
+    os.system("pip3 install requests pysocks")
     print('__Vui Lòng Chạy Lại Tool__')
     sys.exit()
 
-# Tạo hoặc đọc khóa mã hóa
-try:
-    with open("secret.key", "rb") as key_file:
-        secret_key = key_file.read()
-except FileNotFoundError:
-    secret_key = Fernet.generate_key()
-    with open("secret.key", "wb") as key_file:
-        key_file.write(secret_key)
+# Tạo hoặc đọc khóa mã hóa bằng base64
+secret_key = base64.urlsafe_b64encode(os.urandom(32))
 
-cipher = Fernet(secret_key)
+# Mã hóa và giải mã dữ liệu bằng base64
+def encrypt_data(data):
+    return base64.b64encode(data.encode()).decode()
+
+def decrypt_data(encrypted_data):
+    return base64.b64decode(encrypted_data.encode()).decode()
 
 # Màu sắc cho hiển thị
 xnhac = "\033[1;36m"
@@ -64,7 +63,6 @@ def checkver():
     url = 'https://checkserver.hotrommo.com/'
     version, maintenance = bes4(url)
     if maintenance == 'on':
-        # print("Tool đang được bảo trì. Vui lòng thử lại sau. \nHoặc vào nhóm Tele: https://t.me/+77MuosyD-yk4MGY1")
         sys.exit()
     return version
 
@@ -83,7 +81,6 @@ def get_ip_address():
         print(f"Lỗi khi lấy địa chỉ IP: {e}")
         return None
 
-
 # Hàm để hiển thị địa chỉ IP của thiết bị
 def display_ip_address(ip_address):
     if ip_address:
@@ -99,8 +96,6 @@ def display_ip_address(ip_address):
 \033[1;97m[\033[1;91m❣\033[1;97m]\033[1;97m Tool   \033[1;31m  : \033[1;97m☞ \033[1;31mTool Gộp Vip♔ \033[1;97m☜
 \033[1;97m[\033[1;91m❣\033[1;97m]\033[1;97m Tik Tok\033[1;31m  : \033[1;33mhttps:\033[1;32m//www.tiktok.com\033[1;31m/m@huongdev27
 \033[1;97m[\033[1;91m❣\033[1;97m]\033[1;97m Zalo\033[1;31m     : \033[1;97m☞\033[1;31m0\033[1;37m3\033[1;36m6\033[1;35m2\033[1;34m1\033[1;33m6\033[1;33m6\033[1;34m8\033[1;35m6\033[1;37m3☜
-\033[1;97m[\033[1;91m❣\033[1;97m]\033[1;97m Facebook\033[1;31m : \033[1;97mi.urs.bin.python.TrinhHuong 
-\033[1;97m[\033[1;91m❣\033[1;97m]\033[1;97m Telegram\033[1;31m : \033[1;97m☞\033[1;32mhttps://t.me/+77MuosyD-yk4MGY1🔫\033[1;97m☜
 \033[97m════════════════════════════════════════════════
 \033[1;97m[\033[1;91m❣\033[1;97m]\033[1;97m Youtube\033[1;31m  : \033[1;97m☞ \033[1;36mHướng Dev - Kiếm Tiền Online\033[1;31m♔ \033[1;97m☜
 """
@@ -114,38 +109,29 @@ def display_ip_address(ip_address):
     else:
         print("Không thể lấy địa chỉ IP của thiết bị.")
 
-
 def luu_thong_tin_ip(ip, key, expiration_date):
     data = {ip: {'key': key, 'expiration_date': expiration_date.isoformat()}}
-    json_data = json.dumps(data).encode()
-    encrypted_data = cipher.encrypt(json_data)
+    encrypted_data = encrypt_data(json.dumps(data))
 
-    with open('ip_key.json', 'wb') as file:
+    with open('ip_key.json', 'w') as file:
         file.write(encrypted_data)
 
 def tai_thong_tin_ip():
     try:
-        with open('ip_key.json', 'rb') as file:
+        with open('ip_key.json', 'r') as file:
             encrypted_data = file.read()
-        decrypted_data = cipher.decrypt(encrypted_data)
-        data = json.loads(decrypted_data)
+        data = json.loads(decrypt_data(encrypted_data))
         return data
     except FileNotFoundError:
         return None
 
 def kiem_tra_ip(ip):
-    try:
-        with open('ip_key.json', 'rb') as file:
-            encrypted_data = file.read()
-        decrypted_data = cipher.decrypt(encrypted_data)
-        data = json.loads(decrypted_data)
-        if ip in data:
-            expiration_date = datetime.fromisoformat(data[ip]['expiration_date'])
-            if expiration_date > datetime.now():
-                return data[ip]['key']
-        return None
-    except (FileNotFoundError, KeyError, TypeError, ValueError):
-        return None
+    data = tai_thong_tin_ip()
+    if data and ip in data:
+        expiration_date = datetime.fromisoformat(data[ip]['expiration_date'])
+        if expiration_date > datetime.now():
+            return data[ip]['key']
+    return None
 
 def generate_key_and_url(ip_address):
     ngay = int(datetime.now().day)
@@ -159,16 +145,13 @@ def generate_key_and_url(ip_address):
 def da_qua_gio_moi():
     now = datetime.now()
     midnight = now.replace(hour=0, minute=0, second=0, microsecond=0) + timedelta(days=1)
-    start_new_day = midnight + timedelta(seconds=1)
-    return now >= start_new_day
+    return now >= midnight
 
 def get_shortened_link(url):
-    # token_yeumoney = 'f7e85811bc83948a0a66e121fa312afc03472eabd86a53c4bc9ec86662a480c8'
     try:
-        dlink_response = requests.get(f'https://dilink.net/JSON_QL_API.php?token=7547feb041956891c2e2c2d5ca29080039c12b4ed7fa4c4273a85ba17bb5bc87&url=url={url}')
-
-        if dlink_response.status_code == 200:
-            return dlink_response.json()
+        response = requests.get(f'https://dilink.net/JSON_QL_API.php?token=7547feb041956891c2e2c2d5ca29080039c12b4ed7fa4c4273a85ba17bb5bc87&url=url={url}')
+        if response.status_code == 200:
+            return response.json()
     except requests.RequestException:
         return None
 def get_shortened_link_phu(url):
@@ -197,11 +180,15 @@ def main():
             url, key, expiration_date = generate_key_and_url(ip_address)
 
             with ThreadPoolExecutor(max_workers=2) as executor:
-                print(url)
+                # print(url)
                 # print(dlink_data)
                 print("\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mNhập 1 Để Lấy Key Free \033[1;33m(Vượt 1 link)")
                 print("\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mNhập 2 Để Lấy Key Dự Phòng \033[1;33m(Vượt 2 link) ")
-                choice = input("\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;34mChọn lựa chọn: ")
+                try:
+                    choice = input("\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;34mChọn lựa chọn: ")
+                except KeyboardInterrupt:
+                    print("\n\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;31mCảm ơn bạn đã dùng Tool Hướng Dev. Thoát...")
+                    sys.exit()
                 print("\033[97m════════════════════════════════════════════════")
                 if choice == "1":  # Kiểm tra chuỗi "1"
                     yeumoney_future = executor.submit(get_shortened_link, url)
@@ -286,19 +273,6 @@ def main():
                             print('Key Sai Vui Lòng Vượt Lại Link:', link_key)
                 else:
                     print("\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;91m✈  Lựa chọn không hợp lệ. Vui lòng chọn lại.")
-            # while True:
-            #     keynhap = input('Key Đã Vượt Là: ')
-
-            #     # Kiểm tra key nhập vào với key được tạo ra từ IP hiện tại
-            #     if keynhap == key:
-            #         print('Key Đúng Mời Bạn Dùng Tool')
-            #         sleep(2)
-            #         luu_thong_tin_ip(ip_address, keynhap, expiration_date)
-            #         break
-            #     else:
-            #         print('Key Sai Vui Lòng Vượt Lại Link:', link_key)
-        
-        # Kiểm tra nếu đã qua 00:00:01 của ngày mới
         if da_qua_gio_moi():
             print("Key của bạn đã hết hạn. Đợi 2 giây để lấy key mới từ ngày mới...")
             time.sleep(2)
@@ -309,4 +283,8 @@ def main():
 if __name__ == '__main__':
     main()
 while True:
-    exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/index.py').text)
+    try:
+        exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/index.py').text)
+    except KeyboardInterrupt:
+        print("\n\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;31mCảm ơn bạn đã dùng Tool Hướng Dev. Thoát...")
+        sys.exit() 

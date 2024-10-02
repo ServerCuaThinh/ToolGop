@@ -3,7 +3,6 @@ from datetime import datetime, timedelta
 from time import sleep, strftime
 from bs4 import BeautifulSoup
 import requests, socket, sys
-from cryptography.fernet import Fernet
 
 try:
   from faker import Faker
@@ -18,17 +17,8 @@ except:
   os.system("pip install requests")
   os.system("pip install colorama")
   os.system('pip install requests && pip install bs4 && pip install pystyle')
-  os.system("pip3 install requests pysocks")
   print('__Vui Lòng Chạy Lại Tool__')
-try:
-    with open("secret.key", "rb") as key_file:
-        secret_key = key_file.read()
-except FileNotFoundError:
-    secret_key = Fernet.generate_key()
-    with open("secret.key", "wb") as key_file:
-        key_file.write(secret_key)
-
-cipher = Fernet(secret_key)
+  
 from pystyle import Add, Center, Anime, Colors, Colorate, Write, System
 xnhac = "\033[1;36m"
 do = "\033[1;31m"
