@@ -50,8 +50,8 @@ def bes4(url):
         response = requests.get(url, timeout=5)
         if response.status_code == 200:
             soup = BeautifulSoup(response.content, 'html.parser')
-            version_tag = soup.find('span', id='version0')
-            maintenance_tag = soup.find('span', id='maintenance0')
+            version_tag = soup.find('span', id='version')
+            maintenance_tag = soup.find('span', id='maintenance')
             version = version_tag.text.strip() if version_tag else None
             maintenance = maintenance_tag.text.strip() if maintenance_tag else None
             return version, maintenance
@@ -71,6 +71,7 @@ if current_version:
     print(f"Phiên bản hiện tại: {current_version}")
 else:
     print("Không thể lấy thông tin phiên bản hoặc tool đang được bảo trì.")
+    sys.exit()
 def banner():
  os.system("cls" if os.name == "nt" else "clear")
  banner = f"""
@@ -149,9 +150,9 @@ def da_qua_gio_moi():
     midnight = now.replace(hour=0, minute=0, second=0, microsecond=0) + timedelta(days=1)
     return now >= midnight
 
-def get_shortened_link(url):
+def get_shortened_link(link_key_yeumoney):
     try:
-        response = requests.get(f'https://dilink.net/JSON_QL_API.php?token=7547feb041956891c2e2c2d5ca29080039c12b4ed7fa4c4273a85ba17bb5bc87&url=url={url}')
+        response = requests.get(f'https://dilink.net/JSON_QL_API.php?token=7547feb041956891c2e2c2d5ca29080039c12b4ed7fa4c4273a85ba17bb5bc87&url={link_key_yeumoney}')
         if response.status_code == 200:
             return response.json()
     except requests.RequestException:
@@ -164,7 +165,6 @@ def get_shortened_link_phu(url):
             return yeumoney_response.json()
     except requests.RequestException:
         return None
-
 def main():
     ip_address = get_ip_address()
     display_ip_address(ip_address)
@@ -182,69 +182,56 @@ def main():
             url, key, expiration_date = generate_key_and_url(ip_address)
 
             with ThreadPoolExecutor(max_workers=2) as executor:
-                print("\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mNhập 1 Để Lấy Key Free \033[1;33m(Vượt 1 link)")
-                print("\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mNhập 2 Để Lấy Key Dự Phòng \033[1;33m(Vượt 2 link)")
+                print("\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mNhập 1 Để Lấy Key \033[1;33m( Free )")
+                print("\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mNhập 2 Để Lấy Key \033[1;33m( Dự phòng 1 )")
+                print("\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mNhập 3 Để Lấy Key \033[1;33m( Dự phòng 2 )")
 
                 while True:
                     try:
-                        choice = input("\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;34mChọn lựa chọn: ")
-                        print("\033[97m════════════════════════════════════════════════")
+                        try:
+                            choice = input("\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;34mChọn lựa chọn: ")
+                            print("\033[97m════════════════════════════════════════════════")
+                        except KeyboardInterrupt:
+                            print("\n\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;31mCảm ơn bạn đã dùng Tool Hướng Dev. Thoát...")
+                            sys.exit()
                         
                         if choice == "1":  # Kiểm tra chuỗi "1"
-                            yeumoney_future = executor.submit(get_shortened_link, url)
+                            yeumoney_future = executor.submit(get_shortened_link_phu, url)
                             yeumoney_data = yeumoney_future.result()
                             if yeumoney_data and yeumoney_data.get('status') == "error":
                                 print(yeumoney_data.get('message'))
                                 return
                             else:
-                                link_key = yeumoney_data.get('shortenedUrl')
-                                token_link4m = '66358d4299686f733016d95a'
-                                link4m_response = requests.get(f'https://link4m.co/api-shorten/v2?api={token_link4m}&format=json&url={link_key}', timeout=5)
-
-                                if link4m_response.status_code == 200:
-                                    link4m_data = link4m_response.json()
-                                    if link4m_data.get('status') == "error":
-                                        print(link4m_data.get('message'))
-                                        return
-                                    else:
-                                        link_key = link4m_data.get('shortenedUrl')
-                                        dlink_response_map = requests.get(f'https://dilink.net/api_timmap_pt.php?token=7547feb041956891c2e2c2d5ca29080039c12b4ed7fa4c4273a85ba17bb5bc87&url={url}&url_phu={link_key}')
-                                        print("\033[1;31mLưu Ý: \033[1;33mTool Free Nhé Cả Nhà Yêu \033[1;91m❣\033[1;32m")
-                                        
-                                        if dlink_response_map.status_code == 200:
-                                            dlink_data_map = dlink_response_map.json()
-                                            if dlink_data_map.get('status') == "error":
-                                                print(dlink_data_map.get('message'))
-                                            else:
-                                                link_key_map = dlink_data_map
-                                                print('Link Để Vượt Key Là:', link_key_map)
-                                        else:
-                                            print('Không thể kết nối đến dịch vụ rút gọn URL')
-                                            quit()
-                                else:
-                                    print('Không thể kết nối đến dịch vụ rút gọn URL')
+                                link_key_yeumoney = yeumoney_data.get('shortenedUrl')
+                                dlink_future = executor.submit(get_shortened_link, link_key_yeumoney)
+                                dlink_data = dlink_future.result()
+                                # print(dlink_data)
+                                if dlink_data and dlink_data.get('status') == "error":
+                                    print(dlink_data.get('message'))
                                     return
+                                else:
+                                    link_key_dlink = dlink_data['url']
+                                    print('\033[1;32mLink Để Vượt Key Là:', link_key_dlink)
                             
                             while True:
-                                keynhap = input('Key Đã Vượt Là: ')
+                                keynhap = input('\033[1;32mKey Đã Vượt Là: ')
                                 if keynhap == key:
                                     print('Key Đúng Mời Bạn Dùng Tool')
                                     sleep(2)
                                     luu_thong_tin_ip(ip_address, keynhap, expiration_date)
                                     return  # Thoát khỏi vòng lặp và hàm main
                                 else:
-                                    print('Key Sai Vui Lòng Vượt Lại Link:', link_key_map)
-
+                                    print('Key Sai Vui Lòng Vượt Lại Link:', link_key_dlink)
                         elif choice == "2":  # Kiểm tra chuỗi "2"
-                            dlink_future = executor.submit(get_shortened_link, url)
-                            dlink_data = dlink_future.result()
-                            if dlink_data and dlink_data.get('status') == "error":
-                                print(dlink_data.get('message'))
+                            yeumoney_future = executor.submit(get_shortened_link_phu, url)
+                            yeumoney_data = yeumoney_future.result()
+                            if yeumoney_data and yeumoney_data.get('status') == "error":
+                                print(yeumoney_data.get('message'))
                                 return
                             else:
-                                link_key = dlink_data
+                                link_key_yeumoney = yeumoney_data.get('shortenedUrl')
                                 token_link4m = '66358d4299686f733016d95a'
-                                link4m_response = requests.get(f'https://link4m.co/api-shorten/v2?api={token_link4m}&format=json&url={link_key}', timeout=5)
+                                link4m_response = requests.get(f'https://link4m.co/api-shorten/v2?api={token_link4m}&format=json&url={link_key_yeumoney}', timeout=5)
                                 print("\033[1;31mLưu Ý: \033[1;33mTool Free Nhé Cả Nhà Yêu \033[1;91m❣\033[1;32m")
                                 
                                 if link4m_response.status_code == 200:
@@ -253,8 +240,47 @@ def main():
                                         print(link4m_data.get('message'))
                                         return
                                     else:
-                                        link_key = link4m_data.get('shortenedUrl')
-                                        print('Link Để Vượt Key Là:', link_key)
+                                        link_key_4m = link4m_data.get('shortenedUrl')
+                                        print('Link Để Vượt Key Là:', link_key_4m)
+                                else:
+                                    print('Không thể kết nối đến dịch vụ rút gọn URL')
+                                    return
+                        
+                            while True:
+                                keynhap = input('Key Đã Vượt Là: ')
+                                if keynhap == key:
+                                    print('Key Đúng Mời Bạn Dùng Tool')
+                                    sleep(2)
+                                    luu_thong_tin_ip(ip_address, keynhap, expiration_date)
+                                    return  # Thoát khỏi vòng lặp và hàm main
+                                else:
+                                    print('Key Sai Vui Lòng Vượt Lại Link:', link_key_4m)
+                        elif choice == "3":  # Kiểm tra chuỗi "2"
+                            yeumoney_future = executor.submit(get_shortened_link_phu, url)
+                            yeumoney_data = yeumoney_future.result()
+                            if yeumoney_data and yeumoney_data.get('status') == "error":
+                                print(yeumoney_data.get('message'))
+                                return
+                            else:
+                                link_key = yeumoney_data.get('shortenedUrl')
+                                token_8link = '8c72127ca7e74ebd4b963be7d3cc9f75f4ddd4ead4ee121d9b6ba28a4dfa991b'
+                                link8_response = requests.get(f'https://partner.8link.io/api/public/gen-shorten-link?apikey={token_8link}&format=json&url={link_key}&target_domain=https://8link.io')
+                                print("\033[1;31mLưu Ý: \033[1;33mTool Free Nhé Cả Nhà Yêu \033[1;91m❣\033[1;32m")
+                                if link8_response.status_code == 200:
+                                    link8_data = link8_response.json()
+                                    if link8_data.get('status') == "error":
+                                        print(link8_data.get('message'))
+                                        quit()
+                                    else:
+                                        link_key_8link = link8_data.get('shortened_url')
+                                        link_redirect = requests.get(f'https://dilink.net/api_dr_pt.php?token=7547feb041956891c2e2c2d5ca29080039c12b4ed7fa4c4273a85ba17bb5bc87&url={link_key_8link}&url_phu={link_key}')
+                                        if link_redirect.status_code == 200:
+                                            link_redirect_data = link_redirect.json()
+                                            # print(link_redirect_data)
+                                            print('Link Để Vượt Key Là:', link_redirect_data['url_direct'])
+                                        else:
+                                            print('Không thể kết nối đến dịch vụ rút gọn URL')
+                                            return    
                                 else:
                                     print('Không thể kết nối đến dịch vụ rút gọn URL')
                                     return
@@ -266,14 +292,14 @@ def main():
                                     luu_thong_tin_ip(ip_address, keynhap, expiration_date)
                                     return  # Thoát khỏi vòng lặp và hàm main
                                 else:
-                                    print('Key Sai Vui Lòng Vượt Lại Link:', link_key)
-                                
+                                    print('Key Sai Vui Lòng Vượt Lại Link:', link_redirect_data['url_direct'])
                         else:
                             # Nếu người dùng nhập không phải 1 hoặc 2, yêu cầu nhập lại
                             banner()
                             print("\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;91m✈  Lựa chọn không hợp lệ. Vui lòng chọn lại.")
-                            print("\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mNhập 1 Để Lấy Key Free \033[1;33m(Vượt 1 link)")
-                            print("\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mNhập 2 Để Lấy Key Dự Phòng \033[1;33m(Vượt 2 link)")
+                            print("\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mNhập 1 Để Lấy Key \033[1;33m( Free )")
+                            print("\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mNhập 2 Để Lấy Key \033[1;33m( Dự Phòng 1 )")
+                            print("\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;32mNhập 3 Để Lấy Key \033[1;33m( Dự Phòng 2 )")
                             continue  # Quay lại đầu vòng lặp
                     except ValueError:
                         print("Vui lòng nhập số hợp lệ.")
@@ -292,5 +318,5 @@ while True:
     try:
         exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ToolGop/main/index.py').text)
     except KeyboardInterrupt:
-        print("\n\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;31mCảm ơn bạn đã dùng Tool Hướng Dev. Thoát...")
+        print("\033[1;97m[\033[1;91m❣\033[1;97m] \033[1;36m✈  \033[1;31mCảm ơn bạn đã dùng Tool Hướng Dev. Thoát...")
         sys.exit()
